@@ -1,0 +1,1 @@
+A less user-friendly PoC for the [spreadstack](https://github.com/joe-no-body/beyond-spreadsheets) concept.
