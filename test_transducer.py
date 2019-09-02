@@ -23,16 +23,16 @@ class TestTransducer(unittest.TestCase):
 
     def test_transducer_add6(self):
         program = {
-            'a': 2,
-            'b': 4,
-            'c': {
+            'x': 2,
+            'y': 4,
+            'z': {
                 'op': 'add',
-                'vars': ['a', 'b']
+                'vars': ['x', 'y']
             }
         }
         expected_result = {
-            'a': 2,
-            'b': 4,
-            'c': 6,
+            'x': 2,
+            'y': 4,
+            'z': 6,
         }
         self.assertEqual(expected_result, transducer.run(program))
