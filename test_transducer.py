@@ -36,3 +36,26 @@ class TestTransducer(unittest.TestCase):
             'z': 6,
         }
         self.assertEqual(expected_result, transducer.run(program))
+
+    def test_transducer_multiple_ops(self):
+        program = {
+            'a': 2,
+            'b': 3,
+            'c': {
+                'op': 'add',
+                'vars': ['a', 'b']
+            },
+            'd': 5,
+            'e': {
+                'op': 'add',
+                'vars': ['c', 'd']
+            }
+        }
+        expected_result = {
+            'a': 2,
+            'b': 3,
+            'c': 5,
+            'd': 5,
+            'e': 10,
+        }
+        self.assertEqual(expected_result, transducer.run(program))
