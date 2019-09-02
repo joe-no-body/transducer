@@ -59,3 +59,24 @@ class TestTransducer(unittest.TestCase):
             'e': 10,
         }
         self.assertEqual(expected_result, transducer.run(program))
+
+    def test_transducer_sub(self):
+        program = {
+            'a': 10,
+            'b': 2,
+            'c': {
+                'op': 'sub',
+                'vars': ['a', 'b']
+            },
+            'd': {
+                'op': 'sub',
+                'vars': ['b', 'a']
+            }
+        }
+        expected_result = {
+            'a': 10,
+            'b': 2,
+            'c': 8,
+            'd': -8,
+        }
+        self.assertEqual(expected_result, transducer.run(program))
