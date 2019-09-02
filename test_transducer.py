@@ -5,11 +5,34 @@ import transducer
 
 
 class TestTransducer(unittest.TestCase):
-    def setUp(self) -> None:
-        with open('fixtures/case1_input.json') as f:
-            self.case1_input = json.load(f)
-        with open('fixtures/case1_output.json') as f:
-            self.case1_output = json.load(f)
+    def test_transducer_add(self):
+        program = {
+            "a": 2,
+            "b": 3,
+            "c": {
+                "op": "add",
+                "vars": ["a", "b"]
+            }
+        }
+        expected_result = {
+            'a': 2,
+            'b': 3,
+            'c': 5,
+        }
+        self.assertEqual(expected_result, transducer.run(program))
 
-    def test_transducer(self):
-        self.assertEqual(transducer.run(self.case1_input), self.case1_output)
+    def test_transducer_add6(self):
+        program = {
+            'a': 2,
+            'b': 4,
+            'c': {
+                'op': 'add',
+                'vars': ['a', 'b']
+            }
+        }
+        expected_result = {
+            'a': 2,
+            'b': 4,
+            'c': 6,
+        }
+        self.assertEqual(expected_result, transducer.run(program))
