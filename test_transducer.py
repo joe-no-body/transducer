@@ -1,6 +1,8 @@
 import json
 import unittest
 
+import transducer
+
 
 class TestTransducer(unittest.TestCase):
     def setUp(self) -> None:
@@ -9,5 +11,5 @@ class TestTransducer(unittest.TestCase):
         with open('fixtures/case1_output.json') as f:
             self.case1_output = json.load(f)
 
-    def test_useless(self):
-        pass
+    def test_transducer(self):
+        self.assertEqual(transducer.run(self.case1_input), self.case1_output)
